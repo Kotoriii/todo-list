@@ -1,6 +1,6 @@
 <template>
-  <ItemList />
-  <AddItem />
+  <ItemList :done="false" />
+  <AddItem :done="false" />
 </template>
 
 <script setup lang="ts">

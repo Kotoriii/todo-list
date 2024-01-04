@@ -1,9 +1,9 @@
 <template>
   <input
-    :value="modelValue"
+    :checked="modelValue"
     type="checkbox"
     class="w-24 h-24 border-gray-light shadow-md rounded-full"
-    @input="updateValue"
+    @change="updateValue"
   />
 </template>
 

@@ -13,12 +13,12 @@ import { useTodoStore } from "@/stores/todo";
 import BbInput from "./BbInput.vue";
 import BbButton from "./BbButton.vue";
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
-    todoType?: "todo" | "done";
+    done: boolean;
   }>(),
   {
-    todoType: "todo",
+    done: false,
   }
 );
 
@@ -29,7 +29,7 @@ const itemText = ref<string>("");
 const buttonDisabled = computed(() => itemText.value === "");
 
 const addTodo = () => {
-  todoStore.addTodo(itemText.value);
+  todoStore.addTodo(itemText.value, props.done);
   itemText.value = "";
 };
 </script>

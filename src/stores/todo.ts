@@ -3,16 +3,26 @@ import { defineStore } from "pinia";
 import { Todo } from "@/types/todo";
 
 export const useTodoStore = defineStore("todo", () => {
-  const todos = ref<Todo[]>([{ id: 1, text: "First ToDo", date: new Date() }]);
+  const items = ref<Todo[]>([{ id: 1, text: "First ToDo", date: new Date(), done: false }]);
   // ID could be a UUID in case we just want to hide deleted ToDos, but I went for this simple solution for now
-  const lastId = computed(() => (todos.value.length ? todos.value[todos.value.length - 1].id : 1));
+  const lastId = computed(() => (items.value.length ? items.value[items.value.length - 1].id : 1));
 
-  const addTodo = (text: string) => {
-    todos.value.push({ id: lastId.value + 1, text, date: new Date() });
+  const todos = computed(() => items.value.filter((item) => !item.done));
+  const doneItems = computed(() => items.value.filter((item) => item.done));
+
+  const addTodo = (text: string, done: boolean) => {
+    items.value.push({ id: lastId.value + 1, text, date: new Date(), done });
   };
   const deleteTodo = (id: number) => {
-    todos.value = todos.value.filter((todo) => todo.id !== id);
+    items.value = items.value.filter((item) => item.id !== id);
+  };
+  const toggleDone = (id: number) => {
+    const todo = items.value.find((item) => item.id === id);
+
+    if (todo) {
+      todo.done = !todo.done;
+    }
   };
 
-  return { todos, addTodo, deleteTodo };
+  return { items, todos, doneItems, addTodo, deleteTodo, toggleDone };
 });
