@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
-
 import TodoList from "../views/TodoList.vue";
-import BacklogList from "../views/BacklogList.vue";
+import DoneList from "../views/DoneList.vue";
 
 const routes = [
-  { path: "/", component: TodoList },
-  { path: "/backlog", component: BacklogList },
+  { path: "/", redirect: "/todos" },
+  { path: "/todo", component: TodoList },
+  { path: "/done", component: DoneList },
 ];
 
 export const router = createRouter({

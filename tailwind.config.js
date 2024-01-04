@@ -34,6 +34,8 @@ export default {
       8: "8px",
       12: "12px",
       15: "15px",
+      20: "20px",
+      32: "32px",
     },
   },
   plugins: [],
