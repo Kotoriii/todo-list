@@ -1,8 +1,8 @@
 <template>
-  <section class="w-full max-w-[812px] mx-auto fixed bottom-48">
+  <section class="absolute w-full bottom-48">
     <div class="flex space-x-16">
-      <BbInput class="w-full" v-model="itemText" placeholder="ToDo text" />
-      <BbButton :disabled="buttonDisabled" class="whitespace-nowrap" @click="addTodo">Add Item</BbButton>
+      <BbInput class="flex-1" v-model="itemText" placeholder="ToDo text" />
+      <BbButton class="whitespace-nowrap" :disabled="buttonDisabled" @click="addTodo">Add Item</BbButton>
     </div>
   </section>
 </template>
@@ -10,26 +10,20 @@
 <script lang="ts" setup>
 import { ref, computed } from "vue";
 import { useTodoStore } from "@/stores/todo";
+import { useRoute } from "vue-router";
 import BbInput from "./BbInput.vue";
 import BbButton from "./BbButton.vue";
 
-const props = withDefaults(
-  defineProps<{
-    done: boolean;
-  }>(),
-  {
-    done: false,
-  }
-);
-
 const todoStore = useTodoStore();
+const route = useRoute();
 
 const itemText = ref<string>("");
 
-const buttonDisabled = computed(() => itemText.value === "");
+const buttonDisabled = computed<boolean>(() => itemText.value === "");
+const done = computed<boolean>(() => route.path === "/done");
 
 const addTodo = () => {
-  todoStore.addTodo(itemText.value, props.done);
+  todoStore.addTodo(itemText.value, done.value);
   itemText.value = "";
 };
 </script>

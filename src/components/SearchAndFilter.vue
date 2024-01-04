@@ -11,7 +11,7 @@ import { useTodoStore } from "@/stores/todo";
 
 const todoStore = useTodoStore();
 
-const searchText = computed(() => todoStore.searchText);
+const searchText = computed<string>(() => todoStore.searchText);
 
 const updateSearch = (value: string) => {
   todoStore.updateSearchText(value);

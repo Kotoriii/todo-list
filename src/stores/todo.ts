@@ -5,7 +5,6 @@ import { Todo } from "@/types/todo";
 export const useTodoStore = defineStore("todo", () => {
   const items = ref<Todo[]>([{ id: 1, text: "First ToDo", date: new Date(), done: false }]);
   const searchText = ref<string>("");
-
   /* 
   The SearchBar should support dates, by typing the following string:
   before: 01.05.2022 => show only Todo Items before the date
@@ -39,10 +38,10 @@ export const useTodoStore = defineStore("todo", () => {
   });
 
   // ID could be a UUID in case we just want to hide deleted ToDos, but I went for this simple solution for now
-  const lastId = computed(() => (items.value.length ? items.value[items.value.length - 1].id : 1));
+  const lastId = computed<number>(() => (items.value.length ? items.value[items.value.length - 1].id : 1));
 
-  const todos = computed(() => filteredTodos.value.filter((item) => !item.done));
-  const doneItems = computed(() => filteredTodos.value.filter((item) => item.done));
+  const todos = computed<Todo[]>(() => filteredTodos.value.filter((item) => !item.done));
+  const doneItems = computed<Todo[]>(() => filteredTodos.value.filter((item) => item.done));
 
   const addTodo = (text: string, done: boolean) => {
     items.value.push({ id: lastId.value + 1, text, date: new Date(), done });

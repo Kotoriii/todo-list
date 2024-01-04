@@ -4,5 +4,5 @@
 
 html,
 body {
-  @apply w-full max-w-[812px] mx-auto;
+  @apply w-full max-w-[812px] mx-auto px-8;
 }
