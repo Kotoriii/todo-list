@@ -6,9 +6,9 @@
       'text-15 py-12 px-15': !small,
       'bg-blue text-white border-blue-dark hover:bg-blue-light hover:border-blue disabled:bg-gray-light disabled:border-gray':
         variant === 'default',
-      'border-gray-light text-blue active:border-gray-dark active:text-blue-dark':
-        variant === 'outlined',
+      'border-gray-light text-blue active:border-gray-dark active:text-blue-dark': variant === 'outlined',
     }"
+    :disabled="disabled"
   >
     <slot />
   </button>
@@ -19,10 +19,12 @@ withDefaults(
   defineProps<{
     variant?: "default" | "outlined";
     small?: boolean;
+    disabled?: boolean;
   }>(),
   {
     variant: "default",
     small: false,
+    disabled: false,
   }
 );
 </script>

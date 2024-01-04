@@ -3,13 +3,13 @@
     <RouterLink
       to="/todo"
       class="py-20 text-28 text-gray-dark font-bold"
-      active-class="!text-black border-b border-blue"
+      active-class="!text-black border-b-2 border-blue"
       >To Do</RouterLink
     >
     <RouterLink
       to="/done"
       class="py-20 text-28 text-gray-dark font-bold"
-      active-class="!text-black border-b border-blue"
+      active-class="!text-black border-b-2 border-blue"
       >Done</RouterLink
     >
   </nav>

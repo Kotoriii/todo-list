@@ -1,6 +1,6 @@
 <template>
   <BbNavbar />
-  <main>
+  <main class="relative min-h-screen">
     <router-view />
   </main>
 </template>

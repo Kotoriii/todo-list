@@ -1,9 +1,8 @@
 <template>
   <input
     :value="modelValue"
-    :type="type"
-    :placeholder="placeholder"
-    class="text-15 text-black placeholder:text-gray-light border border-gray-light rounded py-12 px-15 focus:border-blue"
+    type="checkbox"
+    class="w-24 h-24 border-gray-light shadow-md rounded-full"
     @input="updateValue"
   />
 </template>
@@ -11,14 +10,10 @@
 <script lang="ts" setup>
 withDefaults(
   defineProps<{
-    type?: string;
-    modelValue?: string;
-    placeholder?: string;
+    modelValue: boolean;
   }>(),
   {
-    type: "text",
-    modelValue: "",
-    placeholder: "",
+    modelValue: false,
   }
 );
 
