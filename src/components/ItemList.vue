@@ -3,7 +3,7 @@
     <ul>
       <li v-for="item in items" :key="item.id" class="flex justify-between mb-16">
         <div class="flex space-x-8">
-          <BbCheckbox :model-value="item.done" :id="item.id.toString()" @update:modelValue="toggleDone(item.id)" />
+          <BbCheckbox :model-value="item.done" :id="item.id.toString()" @update:model-value="toggleDone(item.id)" />
           <div class="flex flex-col space-y-1">
             <label :for="item.id.toString()" class="text-15">{{ item.text }}</label>
             <div class="text-10 text-gray-dark">{{ new Date(item.date).toLocaleString() }}</div>
